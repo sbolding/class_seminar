@@ -176,30 +176,62 @@ subsectionstyle=hide
 \subsection{}
 
 \begin{frame}
-    \frametitle{Eigenvalue Problem}
+    \frametitle{What is radiation hydrodynamics?}
     \begin{itemize}
-        \item Slab geometry, one-speed transport equation
-    \begin{equation*}
-    \mu \pderiv{\psi}{x} + \Sigma_t \psi(x,\mu)
-    = \frac{1}{4\pi}\left(\Sigma_s  + \frac{\nu \Sigma_f}{\keff} 
-    \right) \phi(x)
-    \end{equation*}
-    \vspace{-0.2in}
-\begin{equation*}
-    \phi(x) = 2 \pi \int_{-1}^1 \psi(x,\mu) \d\mu
-\end{equation*}
-\pause
-    \item Monte Carlo (MC) allows for high fidelity solutions, but is expensive
-        \begin{itemize}
-            \item Typically power iteration with batch estimates of
-        $\keff$ and fission source
-            \item Could accelerate source with lower-rank solution (e.g., CMFD)
-        \end{itemize}
-        \pause
-        \begin{block}{} Alternatively, we use a low-order solution to determine
-        $\keff$ and $\phi(x)$, corrected by MC solutions\end{block}
-\end{itemize}
+        \item Thermal radiative transfer coupled to material motion
+            \begin{itemize}
+                \item Useful for NIF, supernovae calculations
+
+
+            \end{itemize}
+
+     Extension of work by Edwards and Morel to be applied to S$_2$ equations,
+     preserving 
+    \end{itemize}
 \end{frame}
+
+\begin{frame}
+    \frametitle{Example of a 1D Radiative Shock Solution}
+    
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{The governing equations}
+    Real EQUATIONS
+    HOW WE WILL WRITE THEM TO MAKE THIS PRESENTATION EASIER TO FOLLOW
+\end{frame}
+
+\begin{frame}
+    \frametitle{The MUSCL Hancock method}
+    A PREDICTOR CORRECTOR METHOD
+\end{frame}
+
+\begin{frame}
+    \frametitle{Linear Discontinuous Galerkin Spatial Discreziation for TRT}
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Operator splitting and general approach}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Development of Algorithm}
+
+
+\end{frame}
+
+
+\begin{frame}
+    \frametitle{Non-linear iteration scheme}
+
+\end{frame}
+
+\begin{frame}
+
+\end{frame}
+
 
 \begin{frame}
     \frametitle{A High-Order Low-Order Solution to a Transport Problem}
