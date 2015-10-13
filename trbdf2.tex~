@@ -176,7 +176,7 @@ subsectionstyle=hide
 \subsection{}
 
 \begin{frame}
-    \frametitle{What is radiation hydrodynamics?}
+    \frametitle{Eigenvalue Problem}
     \begin{itemize}
         \item Slab geometry, one-speed transport equation
     \begin{equation*}
