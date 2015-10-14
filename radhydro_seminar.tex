@@ -83,7 +83,7 @@ centered, draw=black, fill=Gray!,text=white]
     \end{frame}
 }
 
-\setbeamerfont{frametitle}{size=\large}
+\setbeamerfont{frametitle}{size=\normalsize}
 \setbeamerfont{normal font}{size=\tiny}
 
 \graphicspath{{figures/}}
@@ -101,7 +101,7 @@ centered, draw=black, fill=Gray!,text=white]
 %Aggie-themed
 \pgfdeclareimage[height=0.1in]{TAMUlogo}{tamu_engineering.png}
 \logo{\raisebox{-8pt}{\pgfuseimage{TAMUlogo}}}
-\titlegraphic{\centering\begin{tabular}{lr}\includegraphics[trim=0.0in 0.0in 0.0in 0.0in,clip,height=0.18\textheight]{NEUP.jpg} &
+\titlegraphic{\centering\begin{tabular}{c}
 \includegraphics[height=0.18\textheight]{tamu_seal.png}\end{tabular}}
 %Michigan-themed
 %\pgfdeclareimage[height=0.1in]{UMlogo}{michigan_engineering.png}
@@ -132,10 +132,9 @@ centered, draw=black, fill=Gray!,text=white]
 
   % This will typeset only the frames (or slides) that have the given label ("current" in this case).
 
-\title{A Second-Order Accurate Method for the Grey S$_2$ Radiation Hydrodynamics
-    Equations}
-    \author{{\large Simon R. Bolding \& Jim E. Morel}}
-\date{21 November 2014 \\ \vspace{0.05in} {CLASS seminar}}
+\title{Second-Order Discretization in Space and Time for Grey S$_2$-Radiation Hydrodynamics}
+    \author{{\large Simon R. Bolding, Joshua E. Hansel, \& Jim E. Morel}}
+\date{16 October 2015 \\ \vspace{0.05in} {CLASS seminar}}
 \subject{}
 %\institute{Los Alamos National Laboratory}
 
@@ -180,27 +179,30 @@ subsectionstyle=hide
     \begin{itemize}
         \item Thermal radiative transfer coupled to material motion
             \begin{itemize}
-                \item Useful for NIF, supernovae calculations
-
-
+                \item Useful for inertial confinement fusion and astrophysics calculations
             \end{itemize}
-
-     Extension of work by Edwards and Morel to be applied to S$_2$ equations,
-     preserving 
     \end{itemize}
+        \includegraphics[width=0.5\textwidth,trim=28in 2in 6in 5in,clip]{nif.png}
 \end{frame}
 
 \begin{frame}
     \frametitle{Example of a 1D Radiative Shock Solution}
-    
-
+    \begin{block}{Goal of this project}
+        \begin{itemize}
+            \item
+     Extended work by Edwards and Morel for a method that is second-order in
+     \colb{space} and \colb{time}
+ \item We applied to S$_2$ equations which allows for conservation of momentum 
+     \end{itemize}
+ \end{block}
 \end{frame}
 
 \begin{frame}
     \frametitle{The governing equations}
-    Real EQUATIONS
-    HOW WE WILL WRITE THEM TO MAKE THIS PRESENTATION EASIER TO FOLLOW
+
+    
 \end{frame}
+
 
 \begin{frame}
     \frametitle{The MUSCL Hancock method}
@@ -224,12 +226,26 @@ subsectionstyle=hide
 
 
 \begin{frame}
-    \frametitle{Non-linear iteration scheme}
+    \frametitle{Non-linear iteration scheme for implicit solve} 
+
 
 \end{frame}
 
 \begin{frame}
+    \frametitle{Extra stuff}
+    Code implemented in python
 
+    Energy slope stuff
+
+    Other things
+
+
+\end{frame}
+
+\begin{frame}
+    \frametitle{Future Work}
+
+    Coupling to a high-order system using hybrid-``S$_2$-like'' equations.
 \end{frame}
 
 

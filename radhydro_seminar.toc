@@ -1,0 +1,8 @@
+\beamer@endinputifotherversion {3.24pt}
+\select@language {english}
+\beamer@sectionintoc {1}{Overview}{3}{0}{1}
+\beamer@sectionintoc {2}{Low-Order Solver}{21}{0}{2}
+\beamer@sectionintoc {3}{High-Order Solver}{31}{0}{3}
+\beamer@sectionintoc {4}{HOLO Algorithm}{41}{0}{4}
+\beamer@sectionintoc {5}{Test Problems}{43}{0}{5}
+\beamer@sectionintoc {6}{Conclusions}{51}{0}{6}
