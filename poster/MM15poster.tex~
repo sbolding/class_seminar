@@ -452,7 +452,7 @@ where $\gamma$ is the adiabatic index, and $C_v$ is the specific heat.  However,
     
     
     \begin{block}{Algorithm}
-        \setlength\itemsep{0.0em}
+        \setlength\itemsep{0.2em}
 	  \begin{itemize} 
     \item Each time step is broken into two half time steps.
     \item During the first half time step:
