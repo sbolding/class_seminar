@@ -2,6 +2,7 @@
 \pdfminorversion=4
 \documentclass[xcolor=dvipsnames,fontsize=8pt]{beamer}
 \usepackage{tabls}
+\usepackage{verbatim}
 \usepackage{graphicx}
 %\usepackage{animate}
 \usepackage{xcolor}
@@ -443,6 +444,26 @@ I^+ &=
 \section{Results}
 \subsection{}
 
+\begin{frame}
+    \frametitle{Method of Manufactured Solutions}
+    \begin{itemize}
+        \item Add effective source equation
+        \item saem for radiation
+        \item Adds in a mass term. blah blah
+        \item Use same temporal discretization for sources, but quadruature for high
+            accuracy spatial integration of sources 
+        \item Can be automated relatively easily with \textbf{Sympy}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Before and after of schock solution}
+    \begin{itemize}
+        \item Shock is a discontinuity in the solution
+        \item 
+    \end{itemize}
+
+\end{frame}
 
 \begin{frame}
 \frametitle{Results}

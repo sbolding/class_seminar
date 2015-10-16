@@ -1,0 +1,65 @@
+%% Creator: Inkscape inkscape 0.48.4, www.inkscape.org
+%% PDF/EPS/PS + LaTeX output extension by Johan Engelen, 2010
+%% Accompanies image file 'time_stepping_2.pdf' (pdf, eps, ps)
+%%
+%% To include the image in your LaTeX document, write
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics{<filename>.pdf}
+%% To scale the image, write
+%%   \def\svgwidth{<desired width>}
+%%   \input{<filename>.pdf_tex}
+%%  instead of
+%%   \includegraphics[width=<desired width>]{<filename>.pdf}
+%%
+%% Images with a different path to the parent latex file can
+%% be accessed with the `import' package (which may need to be
+%% installed) using
+%%   \usepackage{import}
+%% in the preamble, and then including the image with
+%%   \import{<path to file>}{<filename>.pdf_tex}
+%% Alternatively, one can specify
+%%   \graphicspath{{<path to file>/}}
+%% 
+%% For more information, please see info/svg-inkscape on CTAN:
+%%   http://tug.ctan.org/tex-archive/info/svg-inkscape
+%%
+\begingroup%
+  \makeatletter%
+  \providecommand\color[2][]{%
+    \errmessage{(Inkscape) Color is used for the text in Inkscape, but the package 'color.sty' is not loaded}%
+    \renewcommand\color[2][]{}%
+  }%
+  \providecommand\transparent[1]{%
+    \errmessage{(Inkscape) Transparency is used (non-zero) for the text in Inkscape, but the package 'transparent.sty' is not loaded}%
+    \renewcommand\transparent[1]{}%
+  }%
+  \providecommand\rotatebox[2]{#2}%
+  \ifx\svgwidth\undefined%
+    \setlength{\unitlength}{330.14375bp}%
+    \ifx\svgscale\undefined%
+      \relax%
+    \else%
+      \setlength{\unitlength}{\unitlength * \real{\svgscale}}%
+    \fi%
+  \else%
+    \setlength{\unitlength}{\svgwidth}%
+  \fi%
+  \global\let\svgwidth\undefined%
+  \global\let\svgscale\undefined%
+  \makeatother%
+  \begin{picture}(1,0.62826336)%
+    \put(0,0){\includegraphics[width=\unitlength]{time_stepping_2.pdf}}%
+    \put(0.03431192,0.63285307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09343292\unitlength}\raggedright $t_n$\end{minipage}}}%
+    \put(0.2403782,0.63285307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.19759614\unitlength}\raggedright $t_{n+1/4}$\end{minipage}}}%
+    \put(0.44644449,0.63285308){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1/2}$\\ \end{minipage}}}%
+    \put(0.65251078,0.63285307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18042397\unitlength}\raggedright $t_{n+3/4}$\\ \end{minipage}}}%
+    \put(0.85857706,0.63285307){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1}$\\ \end{minipage}}}%
+    \put(0.00002539,0.51644453){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.48763779\unitlength}\raggedright \begin{itemize}   \item \underline{Euler equations MH steps}\end{itemize}\end{minipage}}}%
+    \put(0.00002539,0.2416895){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.07594907\unitlength}\raggedright \begin{itemize}   \item \underline{Nonlinear solve for $I^\pm$, $e$, and momentum deposition} \end{itemize}\end{minipage}}}%
+    \put(0.50842069,0.43614653){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright Predictor\\ \end{minipage}}}%
+    \put(0.60430029,0.30321737){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18686584\unitlength}\raggedright Corrector\\ \end{minipage}}}%
+    \put(0.54464608,0.1542539){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright CN\end{minipage}}}%
+    \put(0.63222204,0.01931408){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18686584\unitlength}\raggedright BDF2\end{minipage}}}%
+  \end{picture}%
+\endgroup%

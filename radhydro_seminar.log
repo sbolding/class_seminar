@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.28)  15 OCT 2015 21:17
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.9.28)  15 OCT 2015 21:39
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -674,6 +674,12 @@ Package: beamerouterthemedefault 2012/10/02  (rcs-revision 5ed0f4010e8a)
 \@arstheight=\dimen189
 \@skip@bove=\dimen190
 )
+(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
+Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
+\every@verbatim=\toks40
+\verbatim@line=\toks41
+\verbatim@in@stream=\read2
+)
 (/usr/share/texmf/tex/latex/pgf/frontendlayer/tikz.sty
 (/usr/share/texmf/tex/latex/pgf/basiclayer/pgf.sty
 Package: pgf 2008/01/15 v2.10 (rcs-revision 1.12)
@@ -700,8 +706,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v2.10 (rcs-revision 1.1)
 Package: pgffor 2010/03/23 v2.10 (rcs-revision 1.18)
 \pgffor@iter=\dimen193
 \pgffor@skip=\dimen194
-\pgffor@stack=\toks40
-\pgffor@toks=\toks41
+\pgffor@stack=\toks42
+\pgffor@toks=\toks43
 ))
 (/usr/share/texmf/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2010/10/13 v2.10 (rcs-revision 1.76)
@@ -754,12 +760,6 @@ File: pgflibraryarrows.code.tex 2008/10/27 v2.10 (rcs-revision 1.9)
 ))
 \wideitemsep=\skip57
 
-(/usr/share/texlive/texmf-dist/tex/latex/tools/verbatim.sty
-Package: verbatim 2003/08/22 v1.5q LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks42
-\verbatim@line=\toks43
-\verbatim@in@stream=\read2
-)
 (/usr/share/texlive/texmf-dist/tex/latex/comment/comment.sty
 \CommentStream=\write5
 
@@ -870,33 +870,33 @@ Package: beamercolorthemestructure 2010/06/17  (rcs-revision d02a7cf4d8ae)
 )
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 162.
+(hyperref)                removing `math shift' on input line 163.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `subscript' on input line 162.
+(hyperref)                removing `subscript' on input line 163.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 162.
+(hyperref)                removing `math shift' on input line 163.
 
 (./radhydro_seminar.aux)
 \openout1 = `radhydro_seminar.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 162.
-LaTeX Font Info:    ... okay on input line 162.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 163.
+LaTeX Font Info:    ... okay on input line 163.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -962,7 +962,7 @@ e
 ))
 ABD: EveryShipout initializing macros
 \AtBeginShipoutBox=\box57
-Package hyperref Info: Link coloring OFF on input line 162.
+Package hyperref Info: Link coloring OFF on input line 163.
 
 (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -972,56 +972,56 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count196
 )
-LaTeX Info: Redefining \ref on input line 162.
-LaTeX Info: Redefining \pageref on input line 162.
-LaTeX Info: Redefining \nameref on input line 162.
+LaTeX Info: Redefining \ref on input line 163.
+LaTeX Info: Redefining \pageref on input line 163.
+LaTeX Info: Redefining \nameref on input line 163.
 
 (./radhydro_seminar.out) (./radhydro_seminar.out)
 \@outlinefile=\write6
 \openout6 = `radhydro_seminar.out'.
 
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 162.
+(Font)                  OT1/cmr/m/n --> OT1/cmss/m/n on input line 163.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 162.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 163.
 \symnumbers=\mathgroup6
 \sympureletters=\mathgroup7
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 162.
-LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 162.
+(Font)                  OT1/cmss/m/n --> OT1/cmr/m/n on input line 163.
+LaTeX Font Info:    Redeclaring math alphabet \mathbf on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 162.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 162.
-LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 162.
+(Font)                  OT1/cmr/bx/n --> OT1/cmss/bx/n on input line 163.
+LaTeX Font Info:    Redeclaring math alphabet \mathsf on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 162.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/m/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 162.
-LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 162.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/m/n on input line 163.
+LaTeX Font Info:    Redeclaring math alphabet \mathit on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 162.
+(Font)                  OT1/cmr/m/it --> OT1/cmss/m/it on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 162.
-LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 162.
+(Font)                  OT1/cmr/bx/it --> OT1/cmss/m/it on input line 163.
+LaTeX Font Info:    Redeclaring math alphabet \mathtt on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 162.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 162.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/m/n on input line 163.
 LaTeX Font Info:    Overwriting symbol font `numbers' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 162.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 163.
 LaTeX Font Info:    Overwriting symbol font `pureletters' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 162.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 162.
+(Font)                  OT1/cmss/bx/n --> OT1/cmr/bx/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 162.
+(Font)                  OT1/cmss/bx/n --> OT1/cmss/bx/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 162.
+(Font)                  OT1/cmss/m/n --> OT1/cmss/bx/n on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 162.
+(Font)                  OT1/cmss/m/it --> OT1/cmss/bx/it on input line 163.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 162.
+(Font)                  OT1/cmtt/m/n --> OT1/cmtt/bx/n on input line 163.
 
 (/usr/share/texmf/tex/latex/beamer/base/translator/dicts/translator-basic-dicti
 onary/translator-basic-dictionary-English.dict
@@ -1047,27 +1047,27 @@ Dictionary: translator-numbers-dictionary, Language: English
 tionary/translator-theorem-dictionary-English.dict
 Dictionary: translator-theorem-dictionary, Language: English 
 )
-LaTeX Info: Redefining \includegraphics on input line 162.
+LaTeX Info: Redefining \includegraphics on input line 163.
  (./radhydro_seminar.nav)
-LaTeX Font Info:    Try loading font information for U+msa on input line 168.
+LaTeX Font Info:    Try loading font information for U+msa on input line 169.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 168.
+LaTeX Font Info:    Try loading font information for U+msb on input line 169.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-<tamu_seal.png, id=64, 222.8325pt x 222.8325pt>
+<tamu_seal.png, id=66, 222.8325pt x 222.8325pt>
 File: tamu_seal.png Graphic file (type png)
  <use tamu_seal.png>
-Package pdftex.def Info: tamu_seal.png used on input line 168.
+Package pdftex.def Info: tamu_seal.png used on input line 169.
 (pdftex.def)             Requested size: 48.73428pt x 48.73373pt.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
-(Font)              size <5> substituted on input line 168.
+(Font)              size <5> substituted on input line 169.
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
@@ -1080,19 +1080,19 @@ LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <4> not available
 
 pdfTeX warning: pdflatex (file ./figures/nif.pdf): PDF inclusion: found PDF ver
 sion <1.5>, but at most version <1.4> allowed
-<figures/nif.pdf, id=173, 371.67427pt x 312.02286pt>
+<figures/nif.pdf, id=183, 371.67427pt x 312.02286pt>
 File: figures/nif.pdf Graphic file (type pdf)
  <use figures/nif.pdf>
-Package pdftex.def Info: figures/nif.pdf used on input line 204.
+Package pdftex.def Info: figures/nif.pdf used on input line 205.
 (pdftex.def)             Requested size: 204.86192pt x 167.26807pt.
 
-Overfull \vbox (7.02931pt too high) detected at line 204
+Overfull \vbox (7.02931pt too high) detected at line 205
  []
 
 [4
 
  <./figures/nif.pdf>]
-Overfull \vbox (7.751pt too high) detected at line 227
+Overfull \vbox (7.751pt too high) detected at line 228
  []
 
 [5
@@ -1109,13 +1109,13 @@ Overfull \vbox (7.751pt too high) detected at line 227
 
 pdfTeX warning: pdflatex (file ./slope_tilting.pdf): PDF inclusion: found PDF v
 ersion <1.5>, but at most version <1.4> allowed
-<slope_tilting.pdf, id=354, 257.58734pt x 96.47357pt>
+<slope_tilting.pdf, id=376, 257.58734pt x 96.47357pt>
 File: slope_tilting.pdf Graphic file (type pdf)
  <use slope_tilting.pdf>
 Package pdftex.def Info: slope_tilting.pdf used on input line 52.
 (pdftex.def)             Requested size: 257.58734pt x 96.48213pt.
 )
-Overfull \vbox (7.40448pt too high) detected at line 335
+Overfull \vbox (7.40448pt too high) detected at line 336
  []
 
 [10
@@ -1125,7 +1125,7 @@ Overfull \vbox (7.40448pt too high) detected at line 335
 ] [12
 
 ]
-Overfull \vbox (13.05309pt too high) detected at line 388
+Overfull \vbox (13.05309pt too high) detected at line 389
  []
 
 [13
@@ -1138,7 +1138,7 @@ Overfull \vbox (13.05309pt too high) detected at line 388
 
 pdfTeX warning: pdflatex (file ./time_stepping.pdf): PDF inclusion: found PDF v
 ersion <1.5>, but at most version <1.4> allowed
-<time_stepping.pdf, id=495, 331.38177pt x 207.1802pt>
+<time_stepping.pdf, id=529, 331.38177pt x 207.1802pt>
 File: time_stepping.pdf Graphic file (type pdf)
  <use time_stepping.pdf>
 Package pdftex.def Info: time_stepping.pdf used on input line 52.
@@ -1150,7 +1150,7 @@ Package pdftex.def Info: time_stepping.pdf used on input line 52.
 
 pdfTeX warning: pdflatex (file ./time_stepping_2.pdf): PDF inclusion: found PDF
  version <1.5>, but at most version <1.4> allowed
-<time_stepping_2.pdf, id=518, 331.38177pt x 208.19504pt>
+<time_stepping_2.pdf, id=554, 331.38177pt x 208.19504pt>
 File: time_stepping_2.pdf Graphic file (type pdf)
 
 <use time_stepping_2.pdf>
@@ -1163,114 +1163,118 @@ Package pdftex.def Info: time_stepping_2.pdf used on input line 52.
 ]
 (./radhydro_seminar.toc) [19
 
+] [20
+
+] [21
+
 ]
-<./figures/shock_tube.pdf, id=610, 672.5125pt x 534.99875pt>
+<./figures/shock_tube.pdf, id=697, 672.5125pt x 534.99875pt>
 File: ./figures/shock_tube.pdf Graphic file (type pdf)
 
 <use ./figures/shock_tube.pdf>
-Package pdftex.def Info: ./figures/shock_tube.pdf used on input line 455.
+Package pdftex.def Info: ./figures/shock_tube.pdf used on input line 476.
 (pdftex.def)             Requested size: 307.28769pt x 244.4534pt.
 
-Overfull \vbox (19.07022pt too high) detected at line 455
+Overfull \vbox (19.07022pt too high) detected at line 476
  []
 
-[20
+[22
 
  <./figures/shock_tube.pdf>]
-<./figures/MMS_solution.pdf, id=684, 672.5125pt x 534.99875pt>
+<./figures/MMS_solution.pdf, id=772, 672.5125pt x 534.99875pt>
 File: ./figures/MMS_solution.pdf Graphic file (type pdf)
 
 <use ./figures/MMS_solution.pdf>
-Package pdftex.def Info: ./figures/MMS_solution.pdf used on input line 466.
+Package pdftex.def Info: ./figures/MMS_solution.pdf used on input line 487.
 (pdftex.def)             Requested size: 307.28769pt x 244.4534pt.
 
-Overfull \vbox (19.07022pt too high) detected at line 466
- []
-
-[21
-
- <./figures/MMS_solution.pdf>]
-<./figures/MMS_convergence.pdf, id=755, 706.64pt x 496.85625pt>
-File: ./figures/MMS_convergence.pdf Graphic file (type pdf)
-
-<use ./figures/MMS_convergence.pdf>
-Package pdftex.def Info: ./figures/MMS_convergence.pdf used on input line 476.
-(pdftex.def)             Requested size: 307.28769pt x 216.06248pt.
- [22
-
- <./figures/MMS_convergence.pdf>]
-<./figures/mach2_shock.pdf, id=781, 517.16013pt x 407.8741pt>
-File: ./figures/mach2_shock.pdf Graphic file (type pdf)
-
-<use ./figures/mach2_shock.pdf>
-Package pdftex.def Info: ./figures/mach2_shock.pdf used on input line 485.
-(pdftex.def)             Requested size: 307.28769pt x 242.3489pt.
-
-Overfull \vbox (16.96573pt too high) detected at line 485
+Overfull \vbox (19.07022pt too high) detected at line 487
  []
 
 [23
 
+ <./figures/MMS_solution.pdf>]
+<./figures/MMS_convergence.pdf, id=845, 706.64pt x 496.85625pt>
+File: ./figures/MMS_convergence.pdf Graphic file (type pdf)
+
+<use ./figures/MMS_convergence.pdf>
+Package pdftex.def Info: ./figures/MMS_convergence.pdf used on input line 497.
+(pdftex.def)             Requested size: 307.28769pt x 216.06248pt.
+ [24
+
+ <./figures/MMS_convergence.pdf>]
+<./figures/mach2_shock.pdf, id=873, 517.16013pt x 407.8741pt>
+File: ./figures/mach2_shock.pdf Graphic file (type pdf)
+
+<use ./figures/mach2_shock.pdf>
+Package pdftex.def Info: ./figures/mach2_shock.pdf used on input line 506.
+(pdftex.def)             Requested size: 307.28769pt x 242.3489pt.
+
+Overfull \vbox (16.96573pt too high) detected at line 506
+ []
+
+[25
+
  <./figures/mach2_shock.pdf>]
-<./figures/mach3_shock.pdf, id=828, 511.28519pt x 408.09618pt>
+<./figures/mach3_shock.pdf, id=923, 511.28519pt x 408.09618pt>
 File: ./figures/mach3_shock.pdf Graphic file (type pdf)
 
 <use ./figures/mach3_shock.pdf>
-Package pdftex.def Info: ./figures/mach3_shock.pdf used on input line 494.
+Package pdftex.def Info: ./figures/mach3_shock.pdf used on input line 515.
 (pdftex.def)             Requested size: 307.28769pt x 245.27057pt.
 
-Overfull \vbox (19.88739pt too high) detected at line 494
+Overfull \vbox (19.88739pt too high) detected at line 515
  []
 
-[24
+[26
 
- <./figures/mach3_shock.pdf>] (./radhydro_seminar.toc) [25
+ <./figures/mach3_shock.pdf>] (./radhydro_seminar.toc) [27
 
-] [26
+] [28
 
-] [27
+] [29
 
 ]
-LaTeX Font Info:    Calculating math sizes for size <9.89> on input line 566.
+LaTeX Font Info:    Calculating math sizes for size <9.89> on input line 587.
 
-Overfull \hbox (22.41818pt too wide) in paragraph at lines 566--566
+Overfull \hbox (22.41818pt too wide) in paragraph at lines 587--587
  [][] 
  []
 
 
-Overfull \hbox (20.48514pt too wide) in paragraph at lines 566--566
+Overfull \hbox (20.48514pt too wide) in paragraph at lines 587--587
 [][][] 
  []
 
-[28
+[30
 
 ]
-Overfull \hbox (22.41818pt too wide) in paragraph at lines 566--566
+Overfull \hbox (22.41818pt too wide) in paragraph at lines 587--587
  [][] 
  []
 
 
-Overfull \hbox (20.48514pt too wide) in paragraph at lines 566--566
+Overfull \hbox (20.48514pt too wide) in paragraph at lines 587--587
 [][][][] 
  []
 
-[29
+[31
 
 ]
 File: tamu_seal.png Graphic file (type png)
  <use tamu_seal.png>
-Package pdftex.def Info: tamu_seal.png used on input line 575.
+Package pdftex.def Info: tamu_seal.png used on input line 596.
 (pdftex.def)             Requested size: 48.73428pt x 48.73373pt.
- [30
+ [32
 
 ]
 \c@framenumberappendix=\count197
 
 
 Package hyperref Warning: Option `pdfauthor' has already been used,
-(hyperref)                setting the option has no effect on input line 581.
+(hyperref)                setting the option has no effect on input line 602.
 
-[31
+[33
 
 ]
 \tf@nav=\write7
@@ -1282,11 +1286,11 @@ Package hyperref Warning: Option `pdfauthor' has already been used,
 \tf@snm=\write9
 \openout9 = `radhydro_seminar.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 610.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 610.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 631.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 631.
  (./radhydro_seminar.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 610.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 610.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 631.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 631.
 Package rerunfilecheck Info: File `radhydro_seminar.out' has not changed.
 (rerunfilecheck)             Checksum: 4C1262DF99F428132CE027943E9B5AB9;358.
 
@@ -1294,13 +1298,13 @@ Package rerunfilecheck Info: File `radhydro_seminar.out' has not changed.
 LaTeX Font Warning: Size substitutions with differences
 (Font)              up to 1.0pt have occurred.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 610.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 631.
  ) 
 Here is how much of TeX's memory you used:
- 20539 strings out of 493304
- 387275 string characters out of 6139871
- 502326 words of memory out of 5000000
- 23372 multiletter control sequences out of 15000+600000
+ 20547 strings out of 493304
+ 387345 string characters out of 6139871
+ 504647 words of memory out of 5000000
+ 23376 multiletter control sequences out of 15000+600000
  20126 words of font info for 76 fonts, out of 8000000 for 9000
  957 hyphenation exceptions out of 8191
  49i,22n,64p,1019b,751s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1322,9 +1326,9 @@ e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/tex
 mf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist
 /fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on radhydro_seminar.pdf (31 pages, 3902259 bytes).
+Output written on radhydro_seminar.pdf (33 pages, 3924227 bytes).
 PDF statistics:
- 1072 PDF objects out of 1200 (max. 8388607)
- 72 named destinations out of 1000 (max. 500000)
+ 1182 PDF objects out of 1200 (max. 8388607)
+ 76 named destinations out of 1000 (max. 500000)
  232 words of extra memory for PDF output out of 10000 (max. 10000000)
 
