@@ -209,12 +209,14 @@ subsectionstyle=hide
         \begin{itemize}
             \item Previous work by Edwards and Morel for an algorithm that is second-order in
      \colb{space} and \colb{time}
-            \item \textbf{Hydrodynamics} is solved with a MUSCL-Hancock method predictor-corrector
+            \begin{itemize}
+                \item \textbf{Hydrodynamics} is solved with a MUSCL-Hancock (MH) method predictor-corrector
                 in time
             \item \textbf{Radiation diffusion} is solved with linear discontinuous finite
-                elements in space and a conservative form of TRBDF2 in time
-            \item Resolves issues with mixing of implicit and explicit time
-                    discretizations, as well as different spatial discretizations 
+                elements in space (LDFE) and a modified form of TRBDF2 in time
+             \end{itemize}
+            \item Resolved issues with mixing of different spatial discretizations
+                for the hydrodynamic and radiation variables
             \item Used approximate radiation hydrodynamics equations that produce the correct
         equilibrium diffusion limit solution to $\mathcal{O}(u/c)$
         \end{itemize}
@@ -268,7 +270,7 @@ I^+ &=
 \F_{0} +  
 \frac{\sigma_t}{\sqrt{3}\pi}\E u,  \\
 \frac{1}{c}\pderiv{I^-(x,t)}{t} - \frac{1}{\sqrt{3}}\pderiv{I^-}{x} + \sigma_t
-I^+ &= 
+I^- &= 
 \frac{\sigma_s}{4\pi} c\E + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
 \F_{0} -  
 \frac{\sigma_t}{\sqrt{3}\pi}\E u, 
@@ -287,65 +289,73 @@ I^+ &=
 \begin{frame}
     \frametitle{Solution to the radiation hydrodynamics equations}
      \begin{itemize}
-        \item Combining equations from last two slides gives full rad-hydro equations
-        \item Operator splitting in time is used to separate the Euler equations 
-            from thermal radiative transfer equations. 
+         \item \colb{Operator splitting} in time of the Euler equations
+            and thermal radiative transfer equations with momentum deposition 
             \begin{itemize}
-                \item In our notation Euler equations will advect hydro variables
-                    from $U$ to $U^*$, 
+                \item First, MH solver advects discrete hydro states from $t^n$ to
+                    $t^*$
+                \item Then, a simultaneous solve for implicit radiation and hydro
+                    states from $t^*$ to
+                    $t^{n+1}$
             \end{itemize}
-        \item For hydrodynamics, we use a Eularian mesh where the mesh is fixed and mass flows between
-            cells
-        \item The radiation and internal energy have to be solved with a Newton's method due to
+        \item \textbf{For hydrodynamics}, the spatial mesh is fixed and mass flows between
+            cells (Eulerian)
+        \item Within a \textbf{radiation solve},
+        \begin{itemize}
+             \item An outer fixed-point iteration is
+            used to update momentum from radiation deposition
+            \item The radiation intensityand internal energy have to be solved with a Newton's method due to
             non-linear emission term $\sigma_a a c T^4$
-        \item An outer fixed point method is used to compute for comoving frame flux
-            term $\F_0$, which is a function of $u$
-        \item Want to conserve balance of total energy, momentum, and mass
+        \end{itemize}
+        \item Ensure total energy, momentum, and mass conservation
      \end{itemize}
 \end{frame}
 
-\section{Solution to Euler Equations}
+\section{The MUSCL-Hancock Method}
+\subsection{}
 
 \begin{frame}
     \frametitle{The MUSCL Hancock method is second-order accurate in $x$ \& $t$}
     \begin{itemize}
-        \item The MUSCL Hancock method uses \colb{slope-limited} reconstruction in
-            space and \colb{explicit} predictor-corrector steps in time
-    \begin{figure}[h]
+        \item The MUSCL Hancock method uses a reconstructed linear shape in space,
+            with \colb{slope limiting}    
+            \begin{figure}[h]
         \centering
         \resizebox{0.64\textwidth}{!}{
         \input{slope_tilting.pdf_tex}
         }
     \end{figure}
+    \item \colb{Explicit} predictor-corrector steps are taken in time
     \item For the predictor step interior $F(\BU)$ is used on the faces.  For the
         corrector step, an \colb{approximate Riemann solver} is used for
         $F_{i\pm1/2}(\BU)$.  
-    \item The time from $t_n$ to $t_{n+1}$ is
         \begin{itemize} 
             \item[] \u{ Step 1:}
         \begin{equation*}
-            U_i^* = U_i^n - \frac{\Dt}{2\Dx}\left[F(\BU_{i,R}^n) - F(\BU_{i,L}^n)\right]
+            \tilde\BU_i^{n+1/2} - \BU_i^n = - \frac{\Dt}{2\Dx}\left[F(\BU_{i,R}^n) - F(\BU_{i,L}^n)\right]
         \end{equation*}
     \item[] \u{ Step 2:}
         \begin{equation*}
-            U^{N+1} = U^n - \frac{\Dt}{\Dx}\left[\colb{F(\BU_{i+1/2}^*) -
-            F(\BU_{i-1/2}^*)}\right]
+            \BU^{n+1} - \BU^n = - \frac{\Dt}{\Dx}\left[\colb{F(\tilde\BU_{i+1/2}^{n+1/2}) -
+            F(\tilde\BU_{i-1/2}^{n+1/2})}\right]
         \end{equation*}
         \end{itemize}
     \end{itemize}
 \end{frame}
 
-\section{Solution to TRT Equations}
+\section{Discretizations for TRT Equations}
+\subsection{}
 
 \begin{frame}
-    \frametitle{Time stepping for the radiation and total energy solves}
+    \frametitle{Time discretization for the S$_2$, energy, and momentum solve}
     \begin{itemize}
-        \item  We use a combination of Crank-Nicholson (CN) and a modified
-            version of  BDF2 
-        \item The BDF2 step takes place over a second half time step, rather than the
+        \item  We use a combination of Crank-Nicholson (CN) over half a time step,
+            followed by a modified
+            version of BDF2 
+        \item  The BDF2 step takes place over a second half time step, rather than the
             over the full time step.
         \item This is done to conserve total energy and momentum over the full time
-            step, in conjuction with the two explicit hydro steps.
+            step, in conjuction with two MH predictor-corrector steps.
         \item As an example, consider $\frac{\d \BY}{\d t} = f(\BY)$. Our algorithm uses
             \begin{equation*}
                 \frac{(\BY^{n+1/2} - \BY^n)}{\frac{\Dt}{2}} = \frac{1}{2}\left[f(\BY^{n+1/2}) + f(\BY^{n})\right]
@@ -358,12 +368,15 @@ I^+ &=
 \end{frame}
 
 \begin{frame}
-    \frametitle{Linear Discontinuous Galerkin Spatial Discreziation for TRT}
+    \frametitle{LD Galerkin Spatial Discreziation for TRT}
     \begin{itemize}
-    \item Within a Newton step, the material energy equation can be eliminate, leaving the equations for the radiation as a fixed source problem
+        \item Within a Newton step, the material energy equation can be
+            \colb{linearized} and eliminated,
+        producing fixed source S$_2$ equations
         \begin{equation}
             \pm\frac{1}{\sqrt{3}}
-            \pderiv{I^\pm}{x} + {\hat\sigma_t} I^\pm  - \frac{\hat\sigma_sEc}{4\pi} = \hat Q
+            \pderiv{I^\pm}{x} + {\hat\sigma_t} I^\pm  - \frac{\hat\sigma_sEc}{4\pi} =
+            \hat q
         \end{equation}
         where $\hat{\cdot}$ quantities depend on the time discretization and material energy linearization
     \item We use a lumped LDFE in space with \colb{upwinding} to define $I$ on faces
@@ -388,23 +401,50 @@ I^+ &=
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Spatial discretization of material variables in radiation solve}
+    \begin{itemize}
+        \item S$_2$ equations requires LD values of $\rho,u,$ and $e$ at edges of a cell
+        \begin{itemize}
+            \item Use explicit MH slopes to get edge values of $\rho$ and $u$ for kinetic
+                energy
+            \item The internal energy $e$ is updated at edges based on new $\E$
+             \item We save LD $e$ slopes between radiation solves to construct
+                 $e^*$ at edges
+        \end{itemize}
+        \item Need to update hydro energy and momentum based on radiation
+            deposition
+            \begin{itemize}
+    \item \emph{We only change cell
+        averages} for the material momentum and total energy updates
+    \item The MH slopes are unaffected and reconstructed each hydro solve
+\end{itemize}
+    \end{itemize}
+
+\end{frame}
+
 \section{The algorithm}
+\subsection{}
 
 \begin{frame}
-    \frametitle{Non-linear iteration scheme for each implicit solve} 
+    \frametitle{Non-linear iteration scheme for each \coly{implicit solve}} 
     \begin{itemize}
-        \item Herein ``non-linear solve'' refers to a simultaneous solve of the equations for S$_2$ equations, radiation momentum deposition, and new total material energy
-        \item \colb{Algorithm}
+        \item Herein, a ``nonlinear solve'' refers to a simultaneous solve of the S$_2$ equations, radiation momentum deposition, and new total material energy
+        \item \underline{FOR each nonlinear iteration}
     \begin{enumerate}
-        \item Update material momentum from radiation deposition
+        \item Update cell-averaged material momentum from radiation deposition
         \item Using Newtons method, we eliminate the material energy equation and
-            solve for a new $I^\pm$, and thus $\E$
-        \item Update material internal energy equation based on new $\E$
+            solve for new LD values of $I^\pm$
+        \item Update material internal energy $e$ based on new $\E$
+        \item Update cell-averaged total material energy $E$
     \end{enumerate}
-        \item Energy and momentum updates use lagged $\F_{0}$
-        \item \emph{Initial} numerical tests indicate the momentum update may be unstable if $E/\rho
-            u^2$ or $u/c$ are too large
-        \item We only conserve momentum to the tolerance of outer iteration
+        \item Repeat iterations until convergence
+        \item $\F_{0}$ terms are lagged for entire iteration
+        \item We \colb{conserve momentum} to the tolerance of outer iteration
+            \begin{equation*}
+                \frac{1}{c^2}\pderiv{\F^{k+1}}{t} + \frac{1}{3}\pderiv{\E^{k+1}}{x}
+                = -\left(\sigma_t \F^{k+1} - \frac{4}{3}(\E u)^{k}\right)
+            \end{equation*}
     \end{itemize}
 \end{frame}
 
@@ -515,6 +555,7 @@ I^+ &=
 \end{frame}
 
 \section{Conclusions and Future Work}
+\subsection{}
 
 \begin{frame}
     \frametitle{Conclusions}
@@ -539,7 +580,8 @@ I^+ &=
     Exploring slope limiting and EDL, what is going wrong there
 
     Different way to use internal energy slopes
-\end{frame}
+        Stability of nonlinear iteration scheme.
+ \end{frame}
 
 
 

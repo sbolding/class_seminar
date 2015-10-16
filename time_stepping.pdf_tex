@@ -55,8 +55,10 @@
     \put(0.44644449,0.62979068){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1/2}$\\ \end{minipage}}}%
     \put(0.65251078,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18042397\unitlength}\raggedright $t_{n+3/4}$\\ \end{minipage}}}%
     \put(0.85857706,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1}$\\ \end{minipage}}}%
-    \put(0.00002539,0.51338214){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.48763779\unitlength}\raggedright \begin{itemize}   \item \underline{Euler equations MH steps}\end{itemize}\end{minipage}}}%
-    \put(0.00002539,0.23862711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.07594907\unitlength}\raggedright \begin{itemize}   \item \underline{Nonlinear solve for $I^\pm$, $e$, and momentum deposition} \end{itemize}\end{minipage}}}%
+    \put(0.00002539,0.51338214){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.48763779\unitlength}\raggedright
+\begin{itemize}   \item \underline{MUSCL-Hancock steps}\end{itemize}\end{minipage}}}%
+    \put(0.00002539,0.23862711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.07594907\unitlength}\raggedright
+\begin{itemize}   \item \underline{Nonlinear solves of TRT equations} \end{itemize}\end{minipage}}}%
     \put(0.09464634,0.43197183){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright Predictor\\ \end{minipage}}}%
     \put(0.19052594,0.29904268){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18686584\unitlength}\raggedright Corrector\\ \end{minipage}}}%
     \put(0.13198403,0.1511915){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright CN\end{minipage}}}%

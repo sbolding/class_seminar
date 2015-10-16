@@ -1,8 +1,8 @@
 \beamer@endinputifotherversion {3.24pt}
 \select@language {english}
 \beamer@sectionintoc {1}{Overview}{3}{0}{1}
-\beamer@sectionintoc {2}{Solution to Euler Equations}{9}{0}{2}
-\beamer@sectionintoc {3}{Solution to TRT Equations}{11}{0}{3}
-\beamer@sectionintoc {4}{The algorithm}{14}{0}{4}
-\beamer@sectionintoc {5}{Results}{19}{0}{5}
-\beamer@sectionintoc {6}{Conclusions and Future Work}{27}{0}{6}
+\beamer@sectionintoc {2}{The MUSCL-Hancock Method}{9}{0}{2}
+\beamer@sectionintoc {3}{Discretizations for TRT Equations}{11}{0}{3}
+\beamer@sectionintoc {4}{The algorithm}{16}{0}{4}
+\beamer@sectionintoc {5}{Results}{20}{0}{5}
+\beamer@sectionintoc {6}{Conclusions and Future Work}{28}{0}{6}

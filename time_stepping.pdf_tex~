@@ -36,7 +36,7 @@
   }%
   \providecommand\rotatebox[2]{#2}%
   \ifx\svgwidth\undefined%
-    \setlength{\unitlength}{321.32092292bp}%
+    \setlength{\unitlength}{330.14375bp}%
     \ifx\svgscale\undefined%
       \relax%
     \else%
@@ -48,18 +48,20 @@
   \global\let\svgwidth\undefined%
   \global\let\svgscale\undefined%
   \makeatother%
-  \begin{picture}(1,0.63951062)%
+  \begin{picture}(1,0.62520096)%
     \put(0,0){\includegraphics[width=\unitlength]{time_stepping.pdf}}%
-    \put(0.00101403,0.64422635){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.0959984\unitlength}\raggedright $t_n$\end{minipage}}}%
-    \put(0.21273848,0.64422636){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.20302174\unitlength}\raggedright $t_{n+1/4}$\end{minipage}}}%
-    \put(0.42446294,0.64422636){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25595281\unitlength}\raggedright $t_{n+1/2}$\\ \end{minipage}}}%
-    \put(0.63618738,0.64422635){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18537805\unitlength}\raggedright $t_{n+3/4}$\\ \end{minipage}}}%
-    \put(0.84791184,0.64422635){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.25595281\unitlength}\raggedright $t_{n+1}$\\ \end{minipage}}}%
-    \put(0.00670415,0.5322534){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.50102734\unitlength}\raggedright \begin{itemize}   \item \underline{Euler equations MH steps}\end{itemize}\end{minipage}}}%
-    \put(0.00107348,0.24232222){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.00367081\unitlength}\raggedright \begin{itemize}   \item Nonlinear solve for $I^\pm$, $e$, and momentum deposition \end{itemize}\end{minipage}}}%
-    \put(0.07164669,0.43640447){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18285409\unitlength}\raggedright Predictor\\ \end{minipage}}}%
-    \put(0.16505582,0.30575939){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.1919968\unitlength}\raggedright Corrector\\ \end{minipage}}}%
-    \put(0.09286702,0.14905729){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18285409\unitlength}\raggedright CN\\ \end{minipage}}}%
-    \put(0.19941879,0.02012645){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.1919968\unitlength}\raggedright CN\\ \\ \end{minipage}}}%
+    \put(0.03431192,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.09343292\unitlength}\raggedright $t_n$\end{minipage}}}%
+    \put(0.2403782,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.19759614\unitlength}\raggedright $t_{n+1/4}$\end{minipage}}}%
+    \put(0.44644449,0.62979068){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1/2}$\\ \end{minipage}}}%
+    \put(0.65251078,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18042397\unitlength}\raggedright $t_{n+3/4}$\\ \end{minipage}}}%
+    \put(0.85857706,0.62979067){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.24911268\unitlength}\raggedright $t_{n+1}$\\ \end{minipage}}}%
+    \put(0.00002539,0.51338214){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.48763779\unitlength}\raggedright
+\begin{itemize}   \item \underline{MUSCL-Hancock steps}\end{itemize}\end{minipage}}}%
+    \put(0.00002539,0.23862711){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{1.07594907\unitlength}\raggedright
+\begin{itemize}   \item \underline{Nonlinear solve of TRT equations} \end{itemize}\end{minipage}}}%
+    \put(0.09464634,0.43197183){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright Predictor\\ \end{minipage}}}%
+    \put(0.19052594,0.29904268){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18686584\unitlength}\raggedright Corrector\\ \end{minipage}}}%
+    \put(0.13198403,0.1511915){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.17796746\unitlength}\raggedright CN\end{minipage}}}%
+    \put(0.23624444,0.01958858){\color[rgb]{0,0,0}\makebox(0,0)[lt]{\begin{minipage}{0.18686584\unitlength}\raggedright CN\end{minipage}}}%
   \end{picture}%
 \endgroup%
