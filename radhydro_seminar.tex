@@ -33,7 +33,10 @@ centered, draw=black, fill=Gray!,text=white]
 \newcommand{\norm}[1]{\Arrowvert #1 \Arrowvert}
 \newcommand{\abs}[1]{\arrowvert #1 \arrowvert}
 \newcommand{\BU}[0]{\ensuremath{\mathbf{U}}}
+\newcommand{\BY}[0]{\ensuremath{\mathbf{Y}}}
 \newcommand{\BQ}[0]{\ensuremath{\mathbf{Q}}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
 
 \makeatletter
 \renewcommand{\boxed}[1]{\textcolor{\boxedcolor}{%
@@ -77,6 +80,7 @@ centered, draw=black, fill=Gray!,text=white]
 \newcommand{\bs}{\mathbf{s}}
 \newcommand{\B}[1]{\ensuremath{\mathbf{#1}}}
 \newcommand{\Dt}{\Delta t}
+\newcommand{\Dx}{\Delta x}
 \renewcommand{\d}{\mathsf{d}}
 \newcommand{\mom}[1]{\langle #1 \rangle}
 \newcommand{\xl}{{x_{i-1/2}}}
@@ -187,136 +191,337 @@ subsectionstyle=hide
 \begin{frame}
     \frametitle{What is radiation hydrodynamics?}
     \begin{itemize}
-        \item Thermal radiative transfer coupled to material motion
+        \item Thermal radiative transfer (TRT) coupled to material hydrodynamics
             \begin{itemize}
                 \item Inertial confinement fusion (NIF) and astrophysics calculations
             \end{itemize}
     \end{itemize}
     \begin{figure}
-    \includegraphics[width=0.8\textwidth,trim=0.1in 0.1in 0.0in 0.1in,clip]{nif.pdf}
+    \includegraphics[width=0.6\textwidth,trim=0.1in 0.1in 0.0in 0.1in,clip]{nif.pdf}
     \caption{Comparison of HYDRA simulations for collapses of 2 NIF hohlraum designs, from Meezan et.
     al., 2015}
     \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Example of a 1D Radiative Shock Solution}
-    \begin{block}{Goal of this project}
+    \frametitle{We have implemented and tested a 2$^{\textsf{nd}}$ order solution method}
         \begin{itemize}
-            \item
-     Extended work by Edwards and Morel for a method that is second-order in
+            \item Previous work by Edwards and Morel for an algorithm that is second-order in
      \colb{space} and \colb{time}
- \item We extended the method to S$_2$ equations which allows for conservation of momentum 
+            \item \textbf{Hydrodynamics} is solved with a MUSCL-Hancock method predictor-corrector
+                in time
+            \item \textbf{Radiation diffusion} is solved with linear discontinuous finite
+                elements in space and a conservative form of TRBDF2 in time
+            \item Resolves issues with mixing of implicit and explicit time
+                    discretizations, as well as different spatial discretizations 
+            \item Used approximate radiation hydrodynamics equations that produce the correct
+        equilibrium diffusion limit solution to $\mathcal{O}(u/c)$
+        \end{itemize}
+        \begin{block}{We have extended the method to S$_2$ equations }
      \begin{itemize}
-        \item Can be generalized to S$_n$ equations, but would require some form of
-            acceleration
+        \item S$_2$ allows for conservation of momentum
+        \item Can be generalized to S$_n$ equations, but would also be well suited
+            for a high-order low-order approach 
      \end{itemize}
-     \end{itemize}
- \end{block}
+     \end{block}
 \end{frame}
 
 \begin{frame}
-    \frametitle{The hydrodynamics equations}
+    \frametitle{The non-relativistic radiation hydrodynamics equations}
     \begin{itemize}
-        \item The 1D Euler Equations
-            \begin{equation}a
-                \pderiv{ }{t}\BU + \pderiv{ }{x}f(U) = \mathbf{Q}
+        \item For hydro, we have the 1D Euler Equations with source terms from interaction and emission of \colb{radiation} (grey)
+            \begin{equation}
+                \boxed{
+                    \pderiv{ }{t}\BU + \pderiv{ }{x}F(\BU) = \mathbf{Q(\BU)}}
             \end{equation}
-
+            \begin{tabular}{ccc}
+                $\BU = \begin{pmatrix} \rho \\ \rho u \\ E \end{pmatrix}$, 
+                & $F(\BU) = \begin{pmatrix} \rho u \\ \rho u^2 + p \\ u\fn{E + p}
+                \end{pmatrix}$, 
+                & $Q(\BU) = \begin{pmatrix} 0 \\ \colb{Q_{\textsf{mom}}} \\
+                    \colb{Q_{\textsf{erg}}}
+                \end{pmatrix}$
+            \end{tabular}
+        \item The coupling terms are
+            \begin{align*}
+                \colb{Q_{\textsf{mom}}} = \frac{\sigma_t}{c} \F_0 , \quad & \quad
+                \colb{Q_{\textsf{\textsf{erg}}}}=-\sigma_a
+                    c \left( aT^4 - \E \right) + \frac{\sigma_t u}{c} \F_0
+            \end{align*}
+        \item There is an equation of state to relate internal energy $e$ and $T$
+        \item The Euler equations are typically solved with explicit time discretizations that require a \colb{time step limit} (CFL)
     \end{itemize}
-
 \end{frame}
 
 \begin{frame}
-    \frametitle{The hydrodynamics equation governing equations continued}
+    \frametitle{The $S_2$ equations for radiation hydrodynamics}
     \begin{itemize}
-    \item Radiation transport equation, collocated to $\mu=\pm\frac{1}{\sqrt{3}}$
-        \begin{equation*}
-\frac{1}{c}\pderiv{\psi^\pm}{t} \pm \frac{1}{\sqrt{3}}\pderiv{\psi^\pm}{x} + \sigma_t
-\psi^\pm = 
-\frac{\sigma_s}{4\pi} cE_r + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
-F_{r,0} \pm  
-\frac{\sigma_t}{\sqrt{3}\pi}E_r u 
-\end{equation*} 
-    \item
+    \item The radiation transport equation contains source and loss terms from
+        interaction with material
+    \item To get S$_2$ equations, we collocate to $\mu=\pm\frac{1}{\sqrt{3}}$
+        to get equations for half-range intensities $I^\pm$
+        \begin{align*}
+\frac{1}{c}\pderiv{I^+(x,t)}{t} + \frac{1}{\sqrt{3}}\pderiv{I^+}{x} + \sigma_t
+I^+ &= 
+\frac{\sigma_s}{4\pi} c\E + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
+\F_{0} +  
+\frac{\sigma_t}{\sqrt{3}\pi}\E u,  \\
+\frac{1}{c}\pderiv{I^-(x,t)}{t} - \frac{1}{\sqrt{3}}\pderiv{I^-}{x} + \sigma_t
+I^+ &= 
+\frac{\sigma_s}{4\pi} c\E + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
+\F_{0} -  
+\frac{\sigma_t}{\sqrt{3}\pi}\E u, 
+\end{align*} 
+    \item with
+        \begin{align*}
+        \E = \frac{1}{c}2\pi\int_{-1}^1\!\! I(\mu)\; \d \mu, \quad & \quad \F =
+        2\pi\int_{-1}^1\!\! \mu\, I(\mu) \; \d \mu, \quad & \quad   \F_0 = \F - \frac{4}{3}\E u
+        \end{align*}
+    \item These equations are solved using \colb{implicit} time discretizations
+    \item Angular moments of the S$_2$ equations gives the radiation balance
+        and momentum equations, with correct $-Q_{\textsf{erg}}$ and $-Q_{\textsf{mom}}$
 \end{itemize}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Solution to the radiation hydrodynamics equations}
+     \begin{itemize}
+        \item Combining equations from last two slides gives full rad-hydro equations
+        \item Operator splitting in time is used to separate the Euler equations 
+            from thermal radiative transfer equations. 
+            \begin{itemize}
+                \item In our notation Euler equations will advect hydro variables
+                    from $U$ to $U^*$, 
+            \end{itemize}
+        \item For hydrodynamics, we use a Eularian mesh where the mesh is fixed and mass flows between
+            cells
+        \item The radiation and internal energy have to be solved with a Newton's method due to
+            non-linear emission term $\sigma_a a c T^4$
+        \item An outer fixed point method is used to compute for comoving frame flux
+            term $\F_0$, which is a function of $u$
+        \item Want to conserve balance of total energy, momentum, and mass
+     \end{itemize}
+\end{frame}
+
+\section{Solution to Euler Equations}
 
 \begin{frame}
-    \frametitle{The MUSCL Hancock method}
+    \frametitle{The MUSCL Hancock method is second-order accurate in $x$ \& $t$}
     \begin{itemize}
-    \item The MUSCL Hancock method is a finite volume method that utitlized
-        slope-reconstruction in space
-
-        PICTURE OF SLOPE RECONSTRUCTION
-
-    \item A predictor corrector in time is used for second order accuracy
-    \item For example, from $t_n$ to $t_{n+1/2}$
+        \item The MUSCL Hancock method uses \colb{slope-limited} reconstruction in
+            space and \colb{explicit} predictor-corrector steps in time
+    \begin{figure}[h]
+        \centering
+        \resizebox{0.64\textwidth}{!}{
+        \input{slope_tilting.pdf_tex}
+        }
+    \end{figure}
+    \item For the predictor step interior $F(\BU)$ is used on the faces.  For the
+        corrector step, an \colb{approximate Riemann solver} is used for
+        $F_{i\pm1/2}(\BU)$.  
+    \item The time from $t_n$ to $t_{n+1}$ is
         \begin{itemize} 
-            \item Step 1
+            \item[] \u{ Step 1:}
         \begin{equation*}
-            U^* = U^n + \frac{\Dt}{4}(F(U^n))
+            U_i^* = U_i^n - \frac{\Dt}{2\Dx}\left[F(\BU_{i,R}^n) - F(\BU_{i,L}^n)\right]
         \end{equation*}
-            \item Step 2
+    \item[] \u{ Step 2:}
         \begin{equation*}
-            U^{N+1} = U^n + \frac{\Dt}{2}(F(U^*))
+            U^{N+1} = U^n - \frac{\Dt}{\Dx}\left[\colb{F(\BU_{i+1/2}^*) -
+            F(\BU_{i-1/2}^*)}\right]
         \end{equation*}
         \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Solution to TRT Equations}
+
+\begin{frame}
+    \frametitle{Time stepping for the radiation and total energy solves}
+    \begin{itemize}
+        \item  We use a combination of Crank-Nicholson (CN) and a modified
+            version of  BDF2 
+        \item The BDF2 step takes place over a second half time step, rather than the
+            over the full time step.
+        \item This is done to conserve total energy and momentum over the full time
+            step, in conjuction with the two explicit hydro steps.
+        \item As an example, consider $\frac{\d \BY}{\d t} = f(\BY)$. Our algorithm uses
+            \begin{equation*}
+                \frac{(\BY^{n+1/2} - \BY^n)}{\frac{\Dt}{2}} = \frac{1}{2}\left[f(\BY^{n+1/2}) + f(\BY^{n})\right]
+            \end{equation*}
+            \begin{equation*}
+            \frac{(\BY^{n+1} - \BY^{n+1/2})}{\frac{\Dt}{2}} = \frac{2}{3}f(\BY^{n+1})
+        + \frac{1}{6}f(\BY^{n+1/2})+ \frac{1}{6}f(\BY^{n})
+            \end{equation*}
     \end{itemize}
 \end{frame}
 
 \begin{frame}
     \frametitle{Linear Discontinuous Galerkin Spatial Discreziation for TRT}
     \begin{itemize}
-    \item We use a lumped linear discontinous trial space representation, with upwinding.
-\item There is no slope reconstruction
-\item Preserves the equilibrium diffusion limit
-
-
+    \item Within a Newton step, the material energy equation can be eliminate, leaving the equations for the radiation as a fixed source problem
+        \begin{equation}
+            \pm\frac{1}{\sqrt{3}}
+            \pderiv{I^\pm}{x} + {\hat\sigma_t} I^\pm  - \frac{\hat\sigma_sEc}{4\pi} = \hat Q
+        \end{equation}
+        where $\hat{\cdot}$ quantities depend on the time discretization and material energy linearization
+    \item We use a lumped LDFE in space with \colb{upwinding} to define $I$ on faces
+    \begin{figure}
+    \begin{centering}
+        \begin{tikzpicture}[scale=0.758, every node/.style={transform shape}]
+            \draw (1.0,4.0) node[fill,circle,inner sep=0pt,minimum
+            size=4.2pt] {};
+            \filldraw[color=black, fill=white] (1,2.1250) circle (2.1pt);
+            \draw [->] (1.6,4.25) -- (2.4,4.25) node[anchor=west] {$\mu$};
+            \draw (1.0,0.4) -- (1.0,0.6) node[below, pos=0.4] {$x_{i-1/2}$};
+            \draw (5.90,0.4) -- (5.90,0.6) node[below, pos=0.4] {$x_{i+1/2}$};
+            \node at (4.6,3.70) {$I^+(x)$};
+            \draw [thick] (1.0,0.5) -- (5.9,0.5) node[anchor=north west] {};
+            \draw (1.0,2.125) -- (5.90,3.70);
+            \draw [dashed] (5.90,0.5) -- (5.90,4);
+            \draw [dashed] (1.0,0.5) -- (1.0,4);
+        \end{tikzpicture}
+    \end{centering}
+    \end{figure}
+    \item Fully discrete system is formed with spatial unknowns at the left and right edges of a cell. The system can be inverted directly for S$_2$
 \end{itemize}
+\end{frame}
 
+\section{The algorithm}
 
+\begin{frame}
+    \frametitle{Non-linear iteration scheme for each implicit solve} 
+    \begin{itemize}
+        \item Herein ``non-linear solve'' refers to a simultaneous solve of the equations for S$_2$ equations, radiation momentum deposition, and new total material energy
+        \item \colb{Algorithm}
+    \begin{enumerate}
+        \item Update material momentum from radiation deposition
+        \item Using Newtons method, we eliminate the material energy equation and
+            solve for a new $I^\pm$, and thus $\E$
+        \item Update material internal energy equation based on new $\E$
+    \end{enumerate}
+        \item Energy and momentum updates use lagged $\F_{0}$
+        \item \emph{Initial} numerical tests indicate the momentum update may be unstable if $E/\rho
+            u^2$ or $u/c$ are too large
+        \item We only conserve momentum to the tolerance of outer iteration
+    \end{itemize}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Operator splitting and general approach}
+    \frametitle{Time stepping algorithm, \coly{first half} of time step}
+    \begin{figure}[h]
+        \centering
+        \input{time_stepping.pdf_tex}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Development of Algorithm}
-
-
-\end{frame}
-
-
-\begin{frame}
-    \frametitle{Non-linear iteration scheme for implicit solve} 
-
-
+    \frametitle{Time stepping algorithm, \coly{second half} of time step}
+    \begin{figure}[h]
+        \centering
+        \input{time_stepping_2.pdf_tex}
+    \end{figure}
 \end{frame}
 
 \begin{frame}
-    \frametitle{Extra stuff}
-    Code implemented in python
+    \frametitle{Why all the steps?! This seems expensive\ldots}
+    \begin{itemize}
+        \item In a TRBDF2 scheme, we need a second order accurate estimate of solution
+            at $t_{n+1/2}$ 
+            \begin{equation*}
+            \frac{(\BU^{n+1} - \BU^{n+1/2})}{\frac{\Dt}{2}} = \frac{2}{3}f(\BU^{n+1})
+        + \colb{\frac{1}{6}f(\BU^{n+1/2})}+ \frac{1}{6}f(\BU^{n})
+            \end{equation*}
+        \item If we used a MH predictor to $t_{n+1/2}$, then the hydro variables
+            would only be first order accurate
+        \item The 4 nonlinear solves are not that bad\ldots The maximum allowable size of $\Dt$ based on CFL limit is
+            now twice as big.  
+        \item For the same total number of hydro steps, we do the same amount of work as a two step method, but are \colb{second order accurate}
+    \end{itemize}
+\end{frame}
 
-    Energy slope stuff
+\section{Results}
+\subsection{}
 
-    Other things
 
+\begin{frame}
+\frametitle{Results}
+\framesubtitle{Pure Hydrodynamics: Shock Tube Problem Solutions with van Leer
+  Slope Limiter}
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/shock_tube.pdf}
+\end{center}
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\frametitle{Results}
+\framesubtitle{Diffusion-Limit MMS Problem Solutions}
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/MMS_solution.pdf}
+\end{center}
 
 \end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results}
+\framesubtitle{Convergence Rate for Diffusion-Limit MMS Problem}
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/MMS_convergence.pdf}
+\end{center}
+
+\end{frame}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results}
+\framesubtitle{Mach 2 Radiation-Hydrodynamics Shock}
+
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/mach2_shock.pdf}
+\end{center}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{frame}
+\frametitle{Results}
+\framesubtitle{Mach 3 Radiation-Hydrodynamics Shock, 1000 cells}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{./figures/mach3_shock.pdf}
+\end{center}
+\end{frame}
+
+\section{Conclusions and Future Work}
+
+\begin{frame}
+    \frametitle{Conclusions}
+    
+    Demonstrated second order accuracy using manufactured solutions
+
+    Able to obtain accurate solutions in the EDL
+
+    When radiaiton or material motion become insignificant, you get back the
+    respective algorithms
+
+\end{frame}
+
+
+
 
 \begin{frame}
     \frametitle{Future Work}
-
+    
     Coupling to a high-order system using hybrid-``S$_2$-like'' equations.
+
+    Exploring slope limiting and EDL, what is going wrong there
+
+    Different way to use internal energy slopes
 \end{frame}
 
 
 
-\section{High-Order Solver}
-\subsection{}
 
 
 \begin{frame}
@@ -383,17 +588,17 @@ F_{r,0} \pm
 \begin{align*}
 \pderiv{\rho}{t}+\pderiv{}{x}\fn{\rho u} &= 0 \\
 \pderiv{}{t}\fn{\rho u} + \pderiv{}{x}\fn{\rho u^2 + p} &=
-\frac{\sigma_t}{c} F_{r,0} \\
+\frac{\sigma_t}{c} \F_{0} \\
 \pderiv{E}{t} + \pderiv{}{x}\bracket{\fn{E+p}u} &= -\sigma_a c \fn{aT^4 -
-E_r}+\frac{\sigma_t u}{c} F_{r,0} 
+\E}+\frac{\sigma_t u}{c} \F_{0} 
 \end{align*}
     \item Radiation transport equation, collocated to $\mu=\pm\frac{1}{\sqrt{3}}$
         \begin{equation*}
 \frac{1}{c}\pderiv{\psi^\pm}{t} \pm \frac{1}{\sqrt{3}}\pderiv{\psi^\pm}{x} + \sigma_t
 \psi^\pm = 
-\frac{\sigma_s}{4\pi} cE_r + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
-F_{r,0} \pm  
-\frac{\sigma_t}{\sqrt{3}\pi}E_r u 
+\frac{\sigma_s}{4\pi} c\E + \frac{\sigma_a}{4\pi} acT^4  - \frac{\sigma_t u}{4\pi c}
+\F_{0} \pm  
+\frac{\sigma_t}{\sqrt{3}\pi}\E u 
 \end{equation*}
 \end{itemize}
 \end{frame}
